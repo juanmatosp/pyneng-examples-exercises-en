@@ -17,4 +17,28 @@ This does not mean that the task was done correctly, it is just that at
 this stage it is difficult otherwise test the result.
 """
 
+
+
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+"""
+result = ospf_route.split()
+print("prefix              " + result[0])
+print("AD/Metric           " + result[1])
+print("next-Hop            " + result[3])
+print("Last Update         " + result[4])
+print("Outbound interface  " + result[-1])
+"""
+
+
+output = "\n{:25} {}" * 5 
+route = ospf_route.replace(",", " ").replace("[", "").replace("]","")
+route = route.split()
+#print(route)
+
+print(output.format(
+    "prefix", route[0],
+    "AD/Metric",route[1],
+    "Next-Hop", route[3],
+    "Last Update", route[4],
+    "Outbound interface", route[5]
+))

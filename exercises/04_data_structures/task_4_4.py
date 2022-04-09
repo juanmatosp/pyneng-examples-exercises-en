@@ -23,3 +23,8 @@ this stage it is difficult otherwise test the result.
 """
 
 vlans = [10, 20, 30, 1, 2, 100, 10, 30, 3, 4, 10]
+result = set(vlans)
+result2 = list(result)
+#print(type(result2))
+result2.sort()
+print(result2)

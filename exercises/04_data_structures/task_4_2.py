@@ -16,3 +16,6 @@ this stage it is difficult otherwise test the result.
 """ test de pull y fetch """
 """ Hola 08/04/2022"""
 mac = "AAAA:BBBB:CCCC"
+mac2 = mac.replace(":", ".")
+print (mac2)
+

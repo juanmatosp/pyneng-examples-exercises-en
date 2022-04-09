@@ -21,4 +21,18 @@ This does not mean that the task was done correctly, it is just that at
 this stage it is difficult otherwise test the result.
 """
 
+from posixpath import split
+from unittest import result
+
+
 config = "switchport trunk allowed vlan 1,3,10,20,30,100"
+result = config.split()[-1].split(",")
+print(result)
+#print(config2) esta es para ver que lo divide por comas. 
+#vlans =(result[-1])
+#print(vlans) # imprime pero es tipo string.
+#vlans2 = list(vlans, ",") #pasa el valor a lista.
+#print (type(vlans2)) 
+#print (vlans2)
+#print (set(vlans))
+

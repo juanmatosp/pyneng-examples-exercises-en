@@ -15,4 +15,18 @@ This does not mean that the task was done correctly, it is just that at
 this stage it is difficult otherwise test the result.
 """
 
+from pyrsistent import b
+
+
 mac = "AAAA:BBBB:CCCC"
+
+bit = mac.split(":")
+bit = str(bit).replace(",","").replace("'","").replace(" ","").replace("[", "").replace("]", "")
+#print(type(bit) ,bit)
+#bit = str(bit)
+print('{:b}'.format(int(bit,16)))
+
+"""
+bin_mac = "{:b}".format(int(mac.replace(":",""),16))
+print(bin_mac)
+"""
