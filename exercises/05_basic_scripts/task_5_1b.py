@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Task 5.1b
@@ -50,3 +51,9 @@ london_co = {
         "routing": True,
     },
 }
+
+device = input("Entre uno de los Dipositivos (r1, r2, sw1 ): ")
+params = ", " .join(london_co[device].keys())
+parameter = input(f"Enter parameter name ({params}): ")
+
+print(london_co[device][parameter])

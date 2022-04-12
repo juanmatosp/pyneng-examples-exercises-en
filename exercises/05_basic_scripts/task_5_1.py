@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Task 5.1
@@ -18,6 +19,12 @@ Restriction: You cannot modify the london_co dictionary.
 All tasks must be completed using only the topics covered. That is, this task can be
 solved without using the if condition.
 """
+
+#device = input('Entre uno de los siguientes dipositivos(r1, r2 or sw1)')
+
+#print(entrada)
+
+#print("test" + london_co[entrada])
 
 london_co = {
     "r1": {
@@ -44,3 +51,7 @@ london_co = {
         "routing": True,
     },
 }
+
+
+device = input('Entre uno de los siguientes dipositivos(r1, r2 or sw1): ')
+print('\n', london_co[device], '\n')
