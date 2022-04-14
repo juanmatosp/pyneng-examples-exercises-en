@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Task 5.1d
@@ -43,3 +44,9 @@ london_co = {
         "routing": True,
     },
 }
+
+device = input("Enter device Name(r1, r2, sw1 ): ")
+params = ", ".join(london_co[device].keys())
+#parameter = input(f"Enter the parameter name ({params}): ").lower()
+parameter = str.lower(input(f"Enter the parameter name({params}): "))
+print(london_co[device].get(parameter, "parameter dont found. "))

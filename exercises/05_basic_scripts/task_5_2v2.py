@@ -26,7 +26,7 @@ You can then take 8 bits of the binary mask using slices and convert them to dec
 
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 """
-
+"""
 
 IPs_ingresada = input("Favor introducir la IP: ").split("/")
 mask = IPs_ingresada[-1]
@@ -36,15 +36,39 @@ IPs = list(IPs.split("."))
 #print(IPs[0])
 
 #print(IPs, mask)
+"""
+network = input("Favor introducir IP: ")
+ip, mask = network.split("/")
+ip_list = ip.split(".")
+mask = int(mask)
 
-output = """
+oct1, oct2, oct3, oct4 = [
+    int(ip_list[0]),
+    int(ip_list[1]),
+    int(ip_list[2]),
+    int(ip_list[3])
+
+]
+
+bin_mask = "1" * mask + "0" * (32 - mask)
+m1, m2, m3, m4 = [
+    int(bin_mask[0:8], 2),
+    int(bin_mask[8:16], 2),
+    int(bin_mask[16:24], 2),
+    int(bin_mask[24:32], 2),
+]
+
+ip_output = """
+Network:
 {0:<10} {1:<10} {2:<10} {3:<10}
 {0:08b} {1:08b} {2:08b} {3:08b} """
 
-print(output.format(int(IPs[0]), int(IPs[1]), int(IPs[2]), int(IPs[3])))
+mask_output = """
+Mask:
+/{0}
+{1:<8}  {2:<8}  {3:<8}  {4:<8}
+{1:08b}  {2:08b}  {3:08b}  {4:08b}
+"""
 
-print('\n', output.format(int(mask[0])))
-
-mask = IPs.split("/")
-mask = mask[-1]
-print(type(IPs), IPs, mask)
+print(ip_output.format(oct1, oct2, oct3, oct4))
+print(mask_output.format(mask, m1, m2, m3, m4))

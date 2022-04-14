@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Task 5.1c
@@ -47,3 +48,8 @@ london_co = {
         "routing": True,
     },
 }
+
+device = input("Favor introducir uno de los siguientes devices(r1, r2, sw1): ")
+params = ", " .join(london_co[device].keys())
+parameter = input(f"Entre el parametro ({params}): ") # en esta parte estoy imprimiento el diccionario {params}
+print(london_co[device].get(parameter, "Parametro no encontrado"))
