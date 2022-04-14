@@ -49,13 +49,22 @@ switchport mode trunk
 switchport trunk allowed vlan 2,3,4,5
 """
 
-access_template = [
-    "switchport mode access",
-    "switchport access vlan {}",
-    "switchport nonegotiate",
-    "spanning-tree portfast",
-    "spanning-tree bpduguard enable",
-]
+from ntpath import join
+
+
+Tipo_Interface = input("Interface tipo(access/trunk): ")
+if Tipo_Interface == "access" :
+    inter = input("Enter interfaces tipe and nomber: ")
+    vlan = input("Enter Vlan nubmer: ")
+    access_template = [
+        "switchport mode access",
+        "switchport access vlan {}",
+        "switchport nonegotiate",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable"
+    ]
+    print('interface {}'.format(inter))
+    print("\n" .join(access_template).format(vlan))
 
 trunk_template = [
     "switchport trunk encapsulation dot1q",
