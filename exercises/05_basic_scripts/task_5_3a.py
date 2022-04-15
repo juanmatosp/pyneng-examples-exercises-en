@@ -12,16 +12,33 @@ Restriction: All tasks must be done using the topics covered in this and previou
 This task can be solved without using the if condition and for/while loops.
 """
 
-access_template = [
-    "switchport mode access",
-    "switchport access vlan {}",
-    "switchport nonegotiate",
-    "spanning-tree portfast",
-    "spanning-tree bpduguard enable",
-]
+from ntpath import join
 
-trunk_template = [
-    "switchport trunk encapsulation dot1q",
-    "switchport mode trunk",
-    "switchport trunk allowed vlan {}",
-]
+
+Tipo_Interface = input("Interface tipo(access/trunk): ")
+if Tipo_Interface == "access" :
+    inter = input("Enter interfaces type and nomber: ")
+    vlan = input("Enter Vlan nubmer Access: ")
+    access_template = [
+        "switchport mode access",
+        "switchport access vlan {}",
+        "switchport nonegotiate",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable",
+    ]
+    print('interface {}'.format(inter))
+    print("\n".join(access_template).format(vlan))
+
+elif Tipo_Interface == "trunk":
+    inter = input("Enter interfaces type and nomber: ")
+    vlan = input("Enter Allowed Vlan: ")
+    trunk_template = [
+        "switchport trunk encapsulation dot1q",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan {}",
+    ]
+    print('interface {}'.format(inter))
+    print("\n".join(trunk_template).format(vlan))
+
+else:
+    print("Opcion no valida ")

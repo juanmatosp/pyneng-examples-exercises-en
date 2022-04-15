@@ -54,7 +54,7 @@ from ntpath import join
 
 Tipo_Interface = input("Interface tipo(access/trunk): ")
 if Tipo_Interface == "access" :
-    inter = input("Enter interfaces tipe and nomber: ")
+    inter = input("Enter interfaces type and nomber: ")
     vlan = input("Enter Vlan nubmer: ")
     access_template = [
         "switchport mode access",
@@ -66,8 +66,13 @@ if Tipo_Interface == "access" :
     print('interface {}'.format(inter))
     print("\n" .join(access_template).format(vlan))
 
-trunk_template = [
-    "switchport trunk encapsulation dot1q",
-    "switchport mode trunk",
-    "switchport trunk allowed vlan {}",
-]
+elif Tipo_Interface == "trunk":
+    inter = input("Enter interfaces type and nomber: ")
+    vlan = input("Enter Vlan nubmer: ")
+    trunk_template = [
+        "switchport trunk encapsulation dot1q",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan {}",
+    ]
+    print('\n', 'Interface {}'.format(inter))
+    print('\n' .join(trunk_template).format(vlan), '\n')
