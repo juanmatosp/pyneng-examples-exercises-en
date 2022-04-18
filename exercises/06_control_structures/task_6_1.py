@@ -13,3 +13,9 @@ Restriction: All tasks must be done using the topics covered in this and previou
 """
 
 mac = ["aabb:cc80:7000", "aabb:dd80:7340", "aabb:ee80:7000", "aabb:ff80:7000"]
+
+listNew_mac = []
+
+for macaddres in mac:
+    listNew_mac.append(macaddres.replace(":","."))
+print(listNew_mac)
