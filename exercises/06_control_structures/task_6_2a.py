@@ -18,29 +18,26 @@ even if several points above are not met.
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 """
 
+    #    try:
+IP_Input = input("Introduca la IP Address: ").split(".")
+# newListIP = []
+IP_Correct = True
 
-
-
-resp = True
-while resp:
-#    try:
-    IP_Input = input("Introduca la IP Address: ").split(".")
-    newListIP = []
-
-    if len(IP_Input) == 4 and str(IP_Input).isdigit():
-        print("test")
-        #print(IP_Input)
-        for ValidaIP in IP_Input:
-            #print(ValidaIP)
-            if ValidaIP.isdigit():
-                if int(ValidaIP) <= 255:
-                    newListIP.append(ValidaIP)
-                else:
-                    print('Digito mayor a 255: ', ValidaIP)
-    #    except():
-            else:
-                print("Los datos Introducido no son valido ", IP_Input)
-                resp = False
-        print(newListIP)
+if len(IP_Input) != 4:
+    IP_Correct = False
+else:
+    for ValidaIP in IP_Input:
+        if not (ValidaIP.isdigit() and int(ValidaIP) in range(256)):
+            IP_Correct = False
+            break
+    if not IP_Correct:
+        print("Invalida IP Adrees")
     else:
-        print("salio falso")
+        if IP_Input == '255.255.255.255':
+            print("Local Broadcast")
+        elif IP_Input == "0.0.0.0":
+            print("unassigned")
+        elif 1 <= int(IP_Input[0]) <= 223:
+            print("unicast")
+        elif 224 <= (IP_Input[0]) <= 239:
+            print("Multicast")

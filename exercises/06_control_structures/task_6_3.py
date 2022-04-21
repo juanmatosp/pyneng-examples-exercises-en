@@ -50,6 +50,9 @@ interface FastEthernet0/7
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 """
 
+from multiprocessing.sharedctypes import Value
+
+
 access_template = [
     "switchport mode access",
     "switchport access vlan",
@@ -72,10 +75,33 @@ trunk = {
     "0/7": ["only", "30"],
 }
 
-# for intf, vlan in access.items():
-#     print("interface FastEthernet" + intf)
-#     for command in access_template:
-#         if command.endswith("access vlan"):
-#             print(f" {command} {vlan}")
-#         else:
-#             print(f" {command}")
+for inft, value in trunk.items():
+    print("interface ", inft)
+    for comandos in trunk_template:
+
+        if comandos.endswith("allowed vlan"):
+           accion = value[0]
+           vlans = ",".join(value[1:])
+           
+           if value[0] == 'add':
+               print(f"{comandos} add {vlans}")
+           elif value[0] == 'only':
+               print(f"{comandos} {vlans} ")
+           elif value[0] == 'del':
+               print(f"{comandos} remove {vlans}")
+
+        else:
+            print(f" {comandos}")
+        
+        
+
+
+#for intf, vlan in access.items():
+#    print("interface ", intf)
+#    for comandos in access_template:
+#        if comandos.endswith("access vlan"):
+#           print(comandos, vlan)
+#       else:
+#           print(comandos)
+# hecho por mi. 
+
