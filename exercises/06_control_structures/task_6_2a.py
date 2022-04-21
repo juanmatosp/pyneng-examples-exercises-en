@@ -17,3 +17,30 @@ even if several points above are not met.
 
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 """
+
+
+
+
+resp = True
+while resp:
+#    try:
+    IP_Input = input("Introduca la IP Address: ").split(".")
+    newListIP = []
+
+    if len(IP_Input) == 4 and str(IP_Input).isdigit():
+        print("test")
+        #print(IP_Input)
+        for ValidaIP in IP_Input:
+            #print(ValidaIP)
+            if ValidaIP.isdigit():
+                if int(ValidaIP) <= 255:
+                    newListIP.append(ValidaIP)
+                else:
+                    print('Digito mayor a 255: ', ValidaIP)
+    #    except():
+            else:
+                print("Los datos Introducido no son valido ", IP_Input)
+                resp = False
+        print(newListIP)
+    else:
+        print("salio falso")
