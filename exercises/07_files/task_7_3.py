@@ -20,3 +20,11 @@ the following table was printed on the stdout:
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+
+with open('CAM_table.txt', 'r') as r:
+    for line in r:
+        Line_List = line.split()
+        if Line_List and Line_List[0].isdigit():
+            vlan, mac, _, interface = Line_List
+            print(f"{vlan:9}{mac:20}{interface}")    
+

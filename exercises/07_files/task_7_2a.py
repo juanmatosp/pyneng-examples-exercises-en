@@ -17,3 +17,15 @@ Restriction: All tasks must be done using the topics covered in this and previou
 """
 
 ignore = ["duplex", "alias", "configuration"]
+
+
+filename = 'config_sw1.txt'
+words_intersect = []
+
+with open(filename) as f:
+    for line in f:
+       words = line.split()
+       words_intersect = set(words) & set(ignore)
+       print (words_intersect)
+       if not line.startswith("!") and not words_intersect:
+           print(line.rstrip())

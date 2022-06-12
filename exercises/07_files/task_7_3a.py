@@ -40,3 +40,28 @@ if you sort list of lists above.
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+
+mac_table = []
+with open('CAM_table.txt', 'r') as r:
+    for line in r:
+        Line_List = line.split()
+        if Line_List and Line_List[0].isdigit():
+            vlan, mac, _, interface = Line_List
+            mac_table.append([int(vlan), mac, interface])
+
+for vlan, mac, interface in sorted(mac_table):
+    print(f"{vlan:<10}{mac:20}{interface}")    
+    
+'''
+mac_table = []
+
+with open("CAM_table.txt", "r") as conf:
+    for line in conf:
+        words = line.split()
+        if words and words[0].isdigit():
+            vlan, mac, _, intf = words
+            mac_table.append([int(vlan), mac, intf])
+
+for vlan, mac, intf in sorted(mac_table):
+    print(f"{vlan:<9}{mac:20}{intf}")
+    '''

@@ -17,3 +17,15 @@ Enter VLAN number: 10
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+mac_table = []
+user_vlan = input("Enter VLAN number: ")
+
+with open('CAM_table.txt', 'r') as r:
+    for line in r:
+        Line_List = line.split()
+        if Line_List and Line_List[0].isdigit() and Line_List[0] == user_vlan:
+            vlan, mac, _, interface = Line_List
+            mac_table.append([int(vlan), mac, interface])
+
+for vlan, mac, interface in sorted(mac_table):
+    print(f"{vlan:<10}{mac:20}{interface}")  

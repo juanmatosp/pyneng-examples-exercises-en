@@ -38,5 +38,37 @@ interface Ethernet0/3
  switchport mode trunk
  spanning-tree portfast edge trunk
 ...
-
 """
+
+'''
+
+from distutils.command.config import config
+from netrc import NetrcParseError
+
+
+NewArchivo = []
+configArchivo = []
+hostname = input('Favor indrocir el nobmre para la configuracion: ')
+with open("config_sw1.txt", 'r') as r:
+    Read=r.readlines()
+
+for item in Read:
+    item = item.splitlines()
+    if 'hostname' in item:
+        item = ('hostname {}').format(hostname)
+    if '!' not in item:
+        NewArchivo.append(item)
+for item in NewArchivo:
+    configArchivo.append((str(item).replace("'", "").replace("[", "").replace("]", "")))
+    for item in configArchivo:
+        print (item)
+'''
+
+from sys import argv
+
+filename = argv[1]
+
+with open(filename) as f:
+    for line in f:
+        if not line.startswith("!"):
+            print(line.rstrip())
